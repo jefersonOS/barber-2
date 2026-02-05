@@ -11,10 +11,7 @@ export async function GET() {
     );
   }
 
-  const { data, error } = await supabase
-    .from("services")
-    .select("*")
-    .limit(50);
+  const { data, error } = await supabase.from("clients").select("*").limit(50);
 
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
@@ -42,7 +39,7 @@ export async function POST(request: Request) {
   }
 
   const { data, error } = await supabase
-    .from("services")
+    .from("clients")
     .insert(payload)
     .select("*")
     .single();
@@ -71,7 +68,7 @@ export async function PUT(request: Request) {
 
   const { id, ...updates } = payload;
   const { data, error } = await supabase
-    .from("services")
+    .from("clients")
     .update(updates)
     .eq("id", id)
     .select("*")
@@ -99,7 +96,7 @@ export async function DELETE(request: Request) {
     return NextResponse.json({ error: "Campo obrigatório: id" }, { status: 400 });
   }
 
-  const { error } = await supabase.from("services").delete().eq("id", payload.id);
+  const { error } = await supabase.from("clients").delete().eq("id", payload.id);
 
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });

@@ -21,6 +21,7 @@ STRIPE_SECRET_KEY=
 ```
 
 Para criar as tabelas, aplique o script em [supabase/schema.sql](supabase/schema.sql).
+Opcional: use [supabase/seed.sql](supabase/seed.sql) para dados iniciais.
 
 ## Desenvolvimento
 
@@ -45,6 +46,17 @@ npm run dev
 
 - Evolution: `POST /api/webhooks/evolution`
 - Stripe Checkout: `POST /api/stripe/checkout`
+
+## APIs base (CRUD)
+
+- Empresas: `/api/companies`
+- Unidades: `/api/units`
+- Serviços: `/api/services`
+- Profissionais: `/api/professionals`
+- Clientes: `/api/clients`
+- Agendamentos: `/api/appointments`
+- Convites: `/api/invitations`
+- Aceitar convite: `/api/invitations/accept`
 
 ## Observações
 
