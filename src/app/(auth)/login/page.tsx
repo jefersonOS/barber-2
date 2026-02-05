@@ -1,13 +1,10 @@
 "use client";
 
-import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useMemo, useState } from "react";
 import { getSupabaseClient } from "@/lib/supabase/client";
 
 export default function LoginPage() {
   const supabase = useMemo(() => getSupabaseClient(), []);
-  const searchParams = useSearchParams();
   const [mode, setMode] = useState<"signin" | "signup">("signin");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,13 +13,6 @@ export default function LoginPage() {
     message: string;
   } | null>(null);
   const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    const modeParam = searchParams.get("mode");
-    if (modeParam === "signup" || modeParam === "signin") {
-      setMode(modeParam);
-    }
-  }, [searchParams]);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -143,12 +133,17 @@ export default function LoginPage() {
           </button>
           <div className="flex items-center justify-between text-xs text-zinc-400">
             <span>{mode === "signin" ? "Esqueceu a senha?" : ""}</span>
-            <Link
-              href={mode === "signin" ? "?mode=signup" : "?mode=signin"}
-              className="text-amber-200 transition hover:text-amber-100"
+            <button
+              type="button"
+              onClick={() =>
+                setMode((current) =>
+                  current === "signin" ? "signup" : "signin"
+                )
+              }
+              className="cursor-pointer text-amber-200 transition hover:text-amber-100"
             >
               {mode === "signin" ? "Criar conta" : "Já tenho conta"}
-            </Link>
+            </button>
           </div>
         </form>
       </div>
