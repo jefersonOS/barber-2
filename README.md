@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BarberOS
 
-## Getting Started
+SaaS para barbearias com agendamento via WhatsApp (Evolution), cobrança de sinal via Stripe e gestão multi-tenant no painel web.
 
-First, run the development server:
+## Requisitos
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Node.js 18+
+- Conta Supabase (Postgres)
+- Conta Stripe
+
+## Configuração
+
+Crie um arquivo `.env.local` na raiz com as variáveis:
+
+```
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+SUPABASE_URL=
+SUPABASE_SERVICE_ROLE_KEY=
+STRIPE_SECRET_KEY=
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Para criar as tabelas, aplique o script em [supabase/schema.sql](supabase/schema.sql).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Desenvolvimento
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+npm run dev
+```
 
-## Learn More
+## Rotas principais
 
-To learn more about Next.js, take a look at the following resources:
+- Landing: `/`
+- Login: `/login`
+- Painel: `/dashboard`
+- Owner: `/owner/companies`
+- Empresa: `/company/dashboard`
+- Profissionais: `/company/professionals`
+- Serviços: `/company/services`
+- Unidades: `/company/units`
+- Agenda: `/company/appointments`
+- Relatórios: `/company/reports`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Webhooks
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Evolution: `POST /api/webhooks/evolution`
+- Stripe Checkout: `POST /api/stripe/checkout`
 
-## Deploy on Vercel
+## Observações
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Este projeto inclui páginas e endpoints base para evoluir a autenticação, autorização e automações de agendamento.

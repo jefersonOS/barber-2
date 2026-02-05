@@ -1,0 +1,12 @@
+- [x] Verify that the copilot-instructions.md file in the .github directory is created. (Concluído: arquivo criado.)
+- [x] Clarify Project Requirements (Concluído: Next.js, Supabase, auth social + senha, Stripe, Evolution.)
+- [x] Scaffold the Project (Concluído: Next.js App Router criado.)
+- [x] Customize the Project (Concluído: páginas, APIs e schema adicionados.)
+- [x] Install Required Extensions (Concluído: nenhuma extensão necessária.)
+- [x] Compile the Project (Concluído: lint e build sem erros.)
+- [x] Create and Run Task (Concluído: não necessário.)
+- [x] Launch the Project (Concluído: dev server iniciado.)
+- [x] Ensure Documentation is Complete (Concluído: README atualizado e comentários removidos.)
+- Work through each checklist item systematically.
+- Keep communication concise and focused.
+- Follow development best practices.
