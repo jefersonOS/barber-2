@@ -1,10 +1,12 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
 import { getSupabaseClient } from "@/lib/supabase/client";
 
 export default function LoginPage() {
   const supabase = useMemo(() => getSupabaseClient(), []);
+  const router = useRouter();
   const [mode, setMode] = useState<"signin" | "signup">("signin");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -56,6 +58,8 @@ export default function LoginPage() {
           type: "success",
           message: "Login realizado com sucesso.",
         });
+
+        router.push("/dashboard");
       }
     } catch (error) {
       const message =
